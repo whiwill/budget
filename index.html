@@ -18,9 +18,9 @@
 			}
 			
 			.incomeHolder{
-				position: relative;
-				bottom: 135px;
-				left: 475px;
+				position: absolute;
+				top: 10px;
+				left: 575px;
 			}
 		
 		</style>
@@ -30,38 +30,108 @@
 	
 	<!--
 	add:
-		code to add more rows to income table 
 		actual values and names for budget items
 		
 	-->
-		<table id="expenseTable" border="1">
-			<tr>
-				<th>expense</th>
-				<th>home much we pay per month now</th>
-				<th>new monthly cost</th>
-			</tr>
-			<tr>
-				<td>Banana</td>
-				<td class="price">50</td>
-				<td contentEditable class="newPrice"></td>
-			</tr>
-			<tr>
-				<td>Apple</td>
-				<td  class="price">100</td>
-				<td contentEditable class="newPrice"></td>
-			</tr>
-			<tr style="background-color: #00FF00;">
-				<td>totals</td>
-				<td ><div id="result"></div></td>
-				<td><div id="newResult"></div></td>
-			</tr>
-		</table>
-		<span>
-			<button onClick="calculateSum()">get new total</button>
-			<button onClick="addRow('expenseTable','price','newPrince')">add new row to expenses</button>
-		</span>
+		<div>
+			<table id="expenseTable" border="1">
+				<tr>
+					<th>expense</th>
+					<th>home much we pay per month now</th>
+					<th>new monthly cost</th>
+				</tr>
+				<tr>
+					<td>Internet</td>
+					<td class="price">71</td>
+					<td contentEditable class="newPrice"></td>
+				</tr>
+				<tr>
+					<td>Electricity</td>
+					<td  class="price">81</td>
+					<td contentEditable class="newPrice"></td>
+				</tr>
+				<tr>
+					<td>Groceries</td>
+					<td class="price">200</td>
+					<td contentEditable class="newPrice"></td>
+				</tr>
+				<tr>
+					<td>trip to city</td>
+					<td  class="price">250</td>
+					<td contentEditable class="newPrice"></td>
+				</tr>
+				<tr>
+					<td>Gas</td>
+					<td class="price">14</td>
+					<td contentEditable class="newPrice"></td>
+				</tr>			<tr>
 
-		<div class="incomeHolder">
+					<td>Laundry</td>
+					<td  class="price">75</td>
+					<td contentEditable class="newPrice"></td>
+				</tr>
+				<tr>
+					<td>Phone Crdit</td>
+					<td class="price">20</td>
+					<td contentEditable class="newPrice"></td>
+				</tr>
+				<tr>
+					<td>Recreation</td>
+					<td  class="price">50</td>
+					<td contentEditable class="newPrice"></td>
+				</tr>
+					<td>spending money</td>
+					<td  class="price">75</td>
+					<td contentEditable class="newPrice"></td>
+				</tr>
+				<tr>
+					<td>House Cleaning</td>
+					<td class="price">75</td>
+					<td contentEditable class="newPrice"></td>
+				</tr>			<tr>
+
+					<td>plan tickets home</td>
+					<td  class="price">400</td>
+					<td contentEditable class="newPrice"></td>
+				</tr>
+				<tr>
+					<td>Debt</td>
+					<td class="price">150</td>
+					<td contentEditable class="newPrice"></td>
+				</tr>
+				<tr>
+					<td>Mortgage</td>
+					<td  class="price">400</td>
+					<td contentEditable class="newPrice"></td>
+				</tr>
+				<tr>
+					<td>rent</td>
+					<td class="price">535</td>
+					<td contentEditable class="newPrice"></td>
+				</tr>			<tr>
+
+					<td>Medicine</td>
+					<td  class="price">230</td>
+					<td contentEditable class="newPrice"></td>
+				</tr>
+				<tr>
+					<td>Money spent while at home</td>
+					<td class="price">?</td>
+					<td contentEditable class="newPrice"></td>
+				</tr>
+				<tr style="background-color: #00FF00;">
+					<td>totals</td>
+					<td ><div id="result"></div></td>
+					<td><div id="newResult"></div></td>
+				</tr>
+			</table>
+			<span>
+				<button onClick="calculateSum()">get new total</button>
+				<button onClick="addRow('expenseTable','price','newPrince')">add new row to expenses</button>
+			</span>
+	</div>
+
+	<div class="incomeHolder">
 		<table id="incomeTable" border="1">
 			<tr>
 				<th>activity</th>
@@ -76,6 +146,11 @@
 			<tr>
 				<td>Zumba</td>
 				<td  class="earn">80</td>
+				<td contentEditable class="newEarn"></td>
+			</tr>
+			<tr>
+				<td>Life School</td>
+				<td  contentEditable class="earn">535</td>
 				<td contentEditable class="newEarn"></td>
 			</tr>
 			<tr>
@@ -94,7 +169,7 @@
 			<button onClick="calculateEarnSum()">total income</button>
 			<button onClick="addRow('incomeTable','earn','newEarn')">add new row to income table</button>
 		</span>
-		</div>
+	</div>
 
 		
 	</body>
