@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html>
+	
+	<head>
+
+		<title> js practice </title>
+		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+		
+		<style>
+		.zebra { 
+			  background-color: #dddddd;
+			  color: #666666;
+			}
+
+			tr.zebraHover {
+			  background-color: #FFFACD;
+			}
+			
+			.incomeHolder{
+				position: absolute;
+				top: 10px;
+				left: 675px;
+			}
+		
+		</style>
+	</head>
+
+	<body>
+	
+	<!--
+	add:
+		actual values and names for budget items
+		
+	-->
+		<div>
+			<table id="expenseTable" border="1">
+				<tr>
+					<th>expense</th>
+					<th>home much we pay per month now</th>
+					<th>new monthly cost (click to edit)</th>
+				</tr>
+				<tr>
+					<td>Internet</td>
+					<td class="price">71</td>
+					<td contentEditable class="newPrice">71</td>
+				</tr>
+				<tr>
+					<td>Electricity</td>
+					<td  class="price">81</td>
+					<td contentEditable class="newPrice">81</td>
+				</tr>
+				<tr>
+					<td>Groceries</td>
+					<td class="price">250</td>
+					<td contentEditable class="newPrice">250</td>
+				</tr>
+				<tr>
+					<td>trip to city</td>
+					<td  class="price">50</td>
+					<td contentEditable class="newPrice">50</td>
+				</tr>
+				<tr>
+					<td>Gas</td>
+					<td class="price">14</td>
+					<td contentEditable class="newPrice">14</td>
+				</tr>			<tr>
+
+					<td>Laundry</td>
+					<td  class="price">60</td>
+					<td contentEditable class="newPrice">60</td>
+				</tr>
+				<tr>
+					<td>Phone Crdit</td>
+					<td class="price">20</td>
+					<td contentEditable class="newPrice">20</td>
+				</tr>
+				<tr>
+					<td>Recreation</td>
+					<td  class="price">50</td>
+					<td contentEditable class="newPrice">50</td>
+				</tr>
+					<td>spending money</td>
+					<td  class="price">75</td>
+					<td contentEditable class="newPrice">75</td>
+				</tr>
+				<tr>
+					<td>House Cleaning</td>
+					<td class="price">75</td>
+					<td contentEditable class="newPrice">75</td>
+				</tr>			<tr>
+
+					<td>plan tickets home</td>
+					<td  class="price">200</td>
+					<td contentEditable class="newPrice">200</td>
+				</tr>
+				<tr>
+					<td>Debt</td>
+					<td class="price">150</td>
+					<td contentEditable class="newPrice">150</td>
+				</tr>
+				<tr>
+					<td>Mortgage</td>
+					<td  class="price">400</td>
+					<td contentEditable class="newPrice">400</td>
+				</tr>
+				<tr>
+					<td>rent</td>
+					<td class="price">535</td>
+					<td contentEditable class="newPrice">535</td>
+				</tr>			<tr>
+
+					<td>Medicine</td>
+					<td  class="price">230</td>
+					<td contentEditable class="newPrice">230</td>
+				</tr>
+				<tr>
+					<td>Money spent while at home (?)</td>
+					<td class="price">150</td>
+					<td contentEditable class="newPrice">150</td>
+				</tr>
+				<tr style="background-color: #00FF00;">
+					<td>totals</td>
+					<td ><div id="result"></div></td>
+					<td><div id="newResult"></div></td>
+				</tr>
+			</table>
+			<span>
+				<button onClick="calculateSum()">add up "new monthly cost" column</button>
+				<button onClick="addRow('expenseTable','price','newPrince')">add new row to expenses</button>
+			</span>
+	</div>
+
+	<div class="incomeHolder">
+		<table id="incomeTable" border="1">
+			<tr>
+				<th>activity</th>
+				<th>how much we make per month</th>
+				<th>can/need to make</th>
+			</tr>
+			<tr>
+				<td>thinkful</td>
+				<td class="earn">1300</td>
+				<td contentEditable class="newEarn"></td>
+			</tr>
+			<tr>
+				<td>Zumba</td>
+				<td  class="earn">80</td>
+				<td contentEditable class="newEarn"></td>
+			</tr>
+			<tr>
+				<td>Life School</td>
+				<td  contentEditable class="earn">375</td>
+				<td contentEditable class="newEarn"></td>
+			</tr>
+			<tr>
+				<td>tutoring</td>
+				<td  contentEditable class="earn">?</td>
+				<td contentEditable class="newEarn"></td>
+			</tr>
+			<tr id="totalLine" style="background-color: #00FF00;">
+				<td>totals</td>
+				<td ><div id="earnResult"></div></td>
+				<td><div id="newEarnResult"></div></td>
+			</tr>
+		</table>
+		
+		<span>
+			<button onClick="calculateEarnSum()">total income</button>
+			<button onClick="addRow('incomeTable','earn','newEarn')">add new row to income table</button>
+		</span>
+	</div>
+
+		
+	</body>
+
+	<script>
+   function calculateSum() {
+		var sum = 0;
+		//iterate through each td based on class and add the values
+			$(".price").each(function() {
+				var value = $(this).text();
+				//add only if the value is number
+				if(!isNaN(value) && value.length!=0) {
+					sum += parseFloat(value);
+				}
+
+			});
+		$('#result').text(sum);  
+		
+		//now calulate the new totals for adjusted prices
+		sum=0;
+		$(".newPrice").each(function() {
+				//console.dir(this);
+				var value = $(this).text();
+				//add only if the value is number
+				if(!isNaN(value) && value.length!=0) {
+					sum += parseFloat(value);
+				}
+
+			});
+		$('#newResult').text(sum); 
+		
+	};
+	
+	$(calculateSum);
+	
+	function calculateEarnSum() {
+		var sum = 0;
+		//iterate through each td based on class and add the values
+			$(".earn").each(function() {
+				var value = $(this).text();
+				//add only if the value is number
+				if(!isNaN(value) && value.length!=0) {
+					sum += parseFloat(value);
+				}
+
+			});
+		$('#earnResult').text(sum);  
+		
+		//now calulate the new totals for adjusted prices
+		sum=0;
+		$(".newEarn").each(function() {
+				//console.dir(this);
+				var value = $(this).text();
+				//add only if the value is number
+				if(!isNaN(value) && value.length!=0) {
+					sum += parseFloat(value);
+				}
+
+			});
+		$('#newEarnResult').text(sum); 
+		
+	};
+	 $(calculateEarnSum);
+	
+	$('table tbody tr:even').addClass('zebra'); // finds an element with the id of #table, targets the tbody, and selects every even row and adds a class of .zebra
+	$('table tbody tr').hover(function(){  // on hover (#table tbody tr), run anonymous function
+		$(this).addClass('zebraHover');  // add class of zebraHover
+	}, function(){  // run anonymous function
+		$(this).removeClass('zebraHover');  // when no longer hovering, remove class zebraHover
+	});
+	
+  //http://www.kuahla.com/jquerydemo/demo7c.html
+  //http://stackoverflow.com/questions/5033732/jquery-click-cell-to-change-into-text-box
+  
+  
+  
+	function addRow(table, firstClass, SecondClass) {
+	
+		//console.log(table + "  "+firstClass + "  "+SecondClass);
+		var table = document.getElementById(table);
+		//var row=document.createElement("TR");
+		//insert a new row as second to last row in table (before total line)
+		var row = table.insertRow(table.rows.length - 1);
+		
+		var firstC=document.createElement("TD");
+		firstC.contentEditable="true";
+		
+		var secondC=document.createElement("TD");
+		secondC.className=firstClass;	
+		secondC.contentEditable="true";
+		
+		var thirdC=document.createElement("TD");
+		thirdC.className=SecondClass;
+		thirdC.contentEditable="true";
+		
+		row.appendChild(firstC);
+		row.appendChild(secondC);
+		row.appendChild(thirdC);
+		
+		
+	}
+  </script>
+
+</html>
